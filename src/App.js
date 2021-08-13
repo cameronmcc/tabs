@@ -25,7 +25,43 @@ function App() {
       </section>
     );
   }
-  return <h2>jobs</h2>;
+
+  const { company, dates, duties, title } = jobs[value];
+
+  return (
+    <section className='section'>
+      <div className='title'>
+        <h2>experience</h2>
+        <div className='underline'></div>
+        <div className='jobs-center'>
+          {}
+          <div className='btn-container'>
+            {jobs.map((item, index) => {
+              return (
+                <button key={item.id} onClick={() => setValue(index)}>
+                  {item.company}
+                </button>
+              );
+            })}
+          </div>
+          {}
+          <article classNAme='job-info'>
+            <h3>{title}</h3>
+            <h4>{company}</h4>
+            <p classNAme='job-date'>{dates}</p>
+            {duties.map((duty, index) => {
+              return (
+                <div key={index} className='job-desc'>
+                  <FaAngleDoubleRight classNAme='job-icon'></FaAngleDoubleRight>
+                  <p>{duty}</p>
+                </div>
+              );
+            })}
+          </article>
+        </div>
+      </div>
+    </section>
+  );
 }
 
 export default App;
